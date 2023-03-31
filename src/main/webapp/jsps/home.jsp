@@ -10,8 +10,8 @@
 </head>
 <body>
 <h1 align="center">Landmark Technology - Leaders in Software Delivery automation</h1>
-<h1 align="center"> Welcome to Tesla Project 31.......We have a demo on DevOps E Degree with Linux and AWS  on January 1st, 2023 at 8am EST for our new batch. 
-	Landmark Technology is an ideal online training  platform for DevOps and Cloud, Kubernetes Infrastructures. I Dipo Abidekun i'm going to be a millionaire in IT
+<h1 align="center"> Welcome to The Evolution Deployers Project 31.......We have a demo on DevOps E Degree with Linux and AWS  on January 1st, 2023 at 8am EST for our new batch. 
+	Landmark Technology is an ideal online training  platform for DevOps and Cloud, Kubernetes Infrastructures.
 	</h1>
 	<h1 align="center" >JESUS IS LORD</h1>
 <hr>
