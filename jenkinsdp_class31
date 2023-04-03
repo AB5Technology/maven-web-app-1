@@ -1,0 +1,52 @@
+pipeline{
+    agent {
+      label 'master'
+    }
+      tools {
+       maven 'maven3.9.1'
+    }
+    stages {
+     stage('1.Clone git url'){
+      steps {
+        sh "echo 'cloning the git url' "
+        git 'https://github.com/AB5Technology/maven-web-app-1.git'
+        sh "echo 'git url has been cloned' "
+        }
+     }
+     stage('2. Test and Build'){
+       steps {
+        sh "echo 'testing and building the package'"
+        sh "mvn clean package"
+        sh "echo 'package is built' "
+       }
+   }
+     stage('3. Code quality analysis'){
+       steps{
+           sh "echo 'running code quality analysis with sonarqube' "
+           sh "mvn deploy"
+           sh "echo 'code quality analysis done' "
+       }
+     }
+     stage('4. upload artifacts'){
+         steps{
+             sh "mvn deploy"
+         }
+     }
+     stage('5. Deploy to webserver'){
+         steps{
+         deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://44.192.2.145:8080/')], contextPath: null, war: 'target/*war'
+     }
+     }
+     stage('6. Email notifications'){
+     steps{
+         emailext body: '''Please view the status of deployment done for our dev environment on 04/03/2023.
+The status and logs of the deployment are attached to this email.
+Please let me know if you have any questions.
+
+Thanks
+
+Oladipo''', recipientProviders: [buildUser(), contributor(), developers(), requestor(), upstreamDevelopers()], subject: 'Deployment status', to: 'oladipoabidekun@gmail.com'
+     }
+     }
+ }
+}
